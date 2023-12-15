@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机数生成器</title>
+    <style>
+        /* 使用CSS样式来定义不同的颜色 */
+        .random-color {
+            color: red; /* 设置随机数的颜色为蓝色 */
+        }
+        .extra-color {
+            color: blue; /* 设置额外的数的颜色为红色 */
+        }
+    </style>
+</head>
+<body>
+    <h1>随机数生成器</h1>
+    <p>随机选取7个数（1-33）：</p>
+    <p id="randomNumbers" class="random-color"></p>
+    <p>额外的数（1-16）：</p>
+    <p id="extraNumber" class="extra-color"></p>
+
+    <script>
+        (function() {
+            function generateRandomNumbers() {
+                var selectedNumbers = [];
+                while (selectedNumbers.length < 6) {
+                    var randomNumber = Math.floor(Math.random() * 33 + 1);
+                    if (selectedNumbers.indexOf(randomNumber) === -1) {
+                        selectedNumbers.push(randomNumber);
+                    }
+                }
+                return selectedNumbers;
+            }
+
+            function generateExtraNumber() {
+                var extraNumber = Math.floor(Math.random() * 16 + 1);
+                return extraNumber;
+            }
+
+            var randomNumbers = generateRandomNumbers();
+            var extraNumber = generateExtraNumber();
+
+            // 使用JavaScript将文本内容插入相应的元素中
+            document.getElementById("randomNumbers").textContent = randomNumbers.join(", ");
+            document.getElementById("extraNumber").textContent = extraNumber;
+        })();
+    </script>
+</body>
+</html>
